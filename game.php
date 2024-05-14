@@ -1,72 +1,92 @@
 <?php
-	session_start();
-	$_SESSION["scoreOne"] = 0;
-	$_SESSION["scoreTwo"] = 0;
-	$_SESSION["scoreThree"] = 0;
-	$_SESSION["rollsLeftOne"] = $_POST["rolls"];
-	$_SESSION["rollsLeftTwo"] = $_POST["rolls"];
-	$_SESSION["rollsLeftThree"] = $_POST["rolls"];
-	$_SESSION["userOne"] = $_POST["userOne"];
-	$_SESSION["userTwo"] = $_POST["userTwo"];
-	$_SESSION["userThree"] = $_POST["userThree"];	
+    session_start();
+    if(isset($_POST["buttoun"])){
+        $_SESSION["p1Score"]=0;
+        $_SESSION["p2Score"]=0;
+        $_SESSION["p3Score"]=0;
+        $_SESSION["p1"]=$_POST["playerone"];
+        $_SESSION["p2"]=$_POST["playertwo"];
+        $_SESSION["p3"]=$_POST["playerthree"];
+        $_SESSION["diceNum"]=$_POST["dNum"];
+        $_SESSION["roundNum"]=$_POST["rNum"];
+        $_SESSION["roundN"]=0;
+    }
+    $p1Roll=array();
+    $p2Roll=array();
+    $p3Roll=array();
+    
+    for ($y = 0; $y <$_SESSION["diceNum"] ; $y++) {
+            array_push($p1Roll,rand(1,6));
+            array_push($p2Roll,rand(1,6));
+            array_push($p3Roll,rand(1,6));
+        }
+    
+    
+    if($_SESSION["roundN"]<$_SESSION["roundNum"]){
+        $_SESSION["roundN"]++;
+        for ($x = 0; $x <sizeof($p1Roll) ; $x++) {
+        $_SESSION["p1Score"]+=$p1Roll[$x];
+        $_SESSION["p2Score"]+=$p2Roll[$x];
+        $_SESSION["p3Score"]+=$p3Roll[$x];
+        }
+    }
 ?>
-<!DOCTYPE html>
-<html>
-<head>
-	<link rel="icon" href="photos/icon.png" type="image/png">
-	<link rel="stylesheet" href="css/stylesheet.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
-	<title>Gambling Room</title>
-</head>
 
-<body>	
-	<div id="title"><img src="photos/mainText.png"></div>
-	<div id="menu">			
-		<div id="playerOne" class="playerGame">
-				<div class="playerTitle"><?php echo $_SESSION["userOne"]; ?><br />~</div>	
-				<div class="score">SCORE</div>
-				<div id="scoreOne" class="score">0</div>
-				<div class="rollsLeft">ROLLS LEFT</div>
-				<div class="rollsLeft" id="rollsLeftOne"><?php echo $_SESSION["rollsLeftOne"] ?></div>
-				<input id="rollBtnOne" type="submit" class="roll" value="ROLL" onclick="rollOne();"></input>
-				<canvas id="dicePicOne" class="dicePic" width="50" height="50"></canvas>
-				<canvas id="dicePicOne2" class="dicePic" width="50" height="50"></canvas>
-				<canvas id="dicePicOne3" class="dicePic" width="50" height="50"></canvas>
-		</div>
-		
-		<div id="playerTwo" class="playerGame">
-				<div class="playerTitle"><?php echo $_SESSION["userTwo"]; ?><br />~</div>	
-				<div class="score">SCORE</div>
-				<div id="scoreTwo" class="score">0</div>
-				<div class="rollsLeft">ROLLS LEFT</div>
-				<div class="rollsLeft" id="rollsLeftTwo"><?php echo $_SESSION["rollsLeftTwo"] ?></div>
-				<input id="rollBtnTwo" type="submit" class="roll disabled" value="ROLL" onclick="rollTwo();" disabled></input>
-				<canvas id="dicePicTwo" class="dicePic" width="50" height="50"></canvas>
-				<canvas id="dicePicTwo2" class="dicePic" width="50" height="50"></canvas>
-				<canvas id="dicePicTwo3" class="dicePic" width="50" height="50"></canvas>
-		</div>		
-		
-		<div id="playerThree" class="playerGame">
-				<div class="playerTitle"><?php echo $_SESSION["userThree"]; ?><br />~</div>	
-				<div class="score">SCORE</div>
-				<div id="scoreThree" class="score">0</div>
-				<div class="rollsLeft">ROLLS LEFT</div>
-				<div class="rollsLeft" id="rollsLeftThree"><?php echo $_SESSION["rollsLeftThree"] ?></div>
-				<input id="rollBtnThree" type="submit" class="roll disabled" value="ROLL" onclick="rollThree();" disabled></input>
-				<canvas id="dicePicThree" class="dicePic" width="50" height="50"></canvas>
-				<canvas id="dicePicThree2" class="dicePic" width="50" height="50"></canvas>
-				<canvas id="dicePicThree3" class="dicePic" width="50" height="50"></canvas>
-		</div>
-		
-		<form action="results.php">
-			<input type="submit" id="results" value="RESULTS" disabled></input>
-		</form>
-		
-	</div>	
-	<?php include 'scripts/script.php';?>
-</body>	
+
+<!DOCTYPE html>
+<html lang="sl">
+	<head>
+		<title>	
+            SWEET BONANZA
+		</title>
+		<meta charset="utf-8" >
+        <link rel="stylesheet" href="css/main.css">
+		<link rel="shortcut icon" href="images/Grayicon.ico" type="image/x-icon">
+		<link rel="icon" href="images/icon.png" type="image/x-icon">
+        
+
+	</head>
+	<body onload="generate()">
+        <form name="Obrazec" id="Obrazec" method="post" autocomplete="off" action="<?php if($_SESSION["roundN"]==$_SESSION["roundNum"]){echo 'end.php';}else{echo 'game.php';}?>">
+        <div id="Header">
+            <img src="images/mainText.png">
+        </div>
+        <div id="wrapper">
+            <div class="player">
+                <?php  for ($x = 0; $x <$_SESSION["diceNum"] ; $x++) {
+                    echo "<img src='images/dice".  $p1Roll[$x]. ".png' alt='dice1' style='border:3px solid black; margin:0 1px; border-radius:5px;'>";
+                }?></br></br></br>
+                <strong class="name"><?php echo $_SESSION["p1"];  ?></strong></br>
+                <div class="numero"><?php echo $_SESSION["p1Score"];  ?></div>
+            </div>
+            <div id="sredni"class="player">
+                <?php  for ($x = 0; $x <$_SESSION["diceNum"] ; $x++) {
+                    echo "<img src='images/dice".  $p2Roll[$x]. ".png' alt='dice1' style='border:3px solid black; margin:0 1px; border-radius:5px;'>";
+                }
+                ?>
+                </br></br></br>
+
+                <strong class="name"><?php echo $_SESSION["p2"];  ?></strong></br>
+                <div class="numero"><?php echo $_SESSION["p2Score"];  ?></div>
+            </div>
+            <div class="player">
+                <?php  for ($x = 0; $x <$_SESSION["diceNum"] ; $x++) {
+                    echo "<img src='images/dice".  $p3Roll[$x]. ".png' alt='dice1' style='border:3px solid black; margin:0 1px; border-radius:5px;'>";
+                }
+                ?>
+                </br></br></br>
+
+                <strong class="name"><?php echo $_SESSION["p3"];  ?></strong></br>
+                <div class="numero"><?php echo $_SESSION["p3Score"];  ?></div>
+            </div>
+            <div id="buton" >
+                <input type="submit" id="gumb" value="<?php if($_SESSION["roundN"]==$_SESSION["roundNum"]){echo 'Results';}else {echo 'Roll';}  ?>">
+            </div>
+            <div id="round">
+                    Round: <?php echo $_SESSION["roundN"]  ?>
+            </div>
+        </div>
+        </form>
+	</body>
 </html>
+

@@ -1,46 +1,55 @@
-<?php
-	session_start();
-?>
 <!DOCTYPE html>
-<html>
-<head>
-	<link rel="icon" href="photos/icon.png" type="image/png">
-	<link rel="stylesheet" href="css/stylesheet.css">
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-	<link rel="preconnect" href="https://fonts.googleapis.com">
-	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-	<link href="https://fonts.googleapis.com/css2?family=Poetsen+One&display=swap" rel="stylesheet">
-	<title>Gambling Room</title>
-</head>
-<body>
-	<div id="title"><img src="photos/mainText.png"></div>
-	<div id="menu">
-		<form action="game.php" method="post">
-			<div id="playerOne" class="player">
-				<div class="playerTitle">FIRST<br /> PLAYER<br /><br /><i class="fa fa-fw fa-user-circle-o" id="userOne"></i></div>				
-				<input id="player0" autocomplete="off" onkeydown="limit(this)" onkeyup="limit(this)" type="text" class="playerInput" name="userOne" required></input>
-			</div>
-			<div id="playerTwo" class="player">
-				<div class="playerTitle">SECOND<br /> PLAYER<br /><br /><i class="fa fa-fw fa-user-circle-o" id="userOne"></i></div>
-				<input id="player1" autocomplete="off" onkeydown="limit(this)" onkeyup="limit(this)" type="text" class="playerInput" name="userTwo" required></input>
-			</div>
-			<div id="playerThree" class="player">
-				<div class="playerTitle">THIRD<br /> PLAYER<br /><br /><i class="fa fa-fw fa-user-circle-o" id="userOne"></i></div>
-				<input id="player2" autocomplete="off" onkeydown="limit(this)" onkeyup="limit(this)" type="text" class="playerInput" name="userThree" required></input>
-			</div>
-			<div id="roundsWrapper">
-				<div id="roundsTitle">ROUNDS:</div><br />
-				<select name="rolls" id="rounds">
-					<option value="1">1</option>
-					<option value="2">2</option>
-					<option value="3">3</option>
-					<option value="4">4</option>
-				</select>
-			</div>
-			<input type="submit" id="submit" value="START"></input>
-		</form>
-	</div>
-	<script src="scripts/input.js"></script>
-</body>
-
+<html lang="sl">
+	<head>
+		<title>	
+            SWEET BONANZA
+		</title>
+		<meta charset="utf-8" >
+        <link rel="stylesheet" href="css/main.css">
+		<link rel="shortcut icon" href="images/Grayicon.ico" type="image/x-icon">
+		<link rel="icon" href="images/icon.png" type="image/x-icon">
+	</head>
+	<body onload="generate()">
+		<form name="Obrazec" id="Obrazec" method="post" autocomplete="off" action="game.php" >
+        <div id="Header">        
+            <img src="images/mainText.png">
+        </div>
+        <div id="wrapper">
+            <div class="player">
+                <strong>PLAYER 1</strong></br></br>
+                <input type="text" name="playerone" id="player1" maxlength="10" required>
+            </div>
+            <div class="player">
+                <strong>PLAYER 2</strong></br></br>
+                <input type="text" name="playertwo" id="player2" maxlength="10" required>
+            </div>
+            <div class="player">
+                <strong>PLAYER 3</strong></br></br>
+                <input type="text" name="playerthree" id="player3" maxlength="10" required>
+            </div>
+            <div class="num">
+                <strong>NUMBER OF DICE</strong></br>
+                <select name="dNum" id="dNum">
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </div>
+            <div class="num">
+                <button type="submit" id="nextSlide" ><strong>START</strong></button>
+                <input id="gumb" name="buttoun" style="display:none;">
+            </div>
+            <div class="num">
+                <strong>START</strong></br>
+                <select name="rNum" id="rNum">
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                    <option value="4">Four</option>
+                    <option value="5">Five</option>
+                </select>
+            </div>
+        </div>
+        </form>
+	</body>
 </html>
