@@ -6,17 +6,19 @@ body {
   font-size: 15px;
 }
 
-#Header {
+#header {
   margin: auto;
   align-items: center;
   justify-content: center;
   display: flex;
 }
+
 #dice {
   padding: 15px;
   height: 150px;
 }
-#sredni {
+
+#middle {
   border-left: 3px solid black;
   border-right: 3px solid black;
   padding: 0 45px;
@@ -28,7 +30,7 @@ body {
   text-transform: uppercase;
 }
 
-.numero {
+.number {
   font-size: 50px;
   text-transform: uppercase;
   font-family: "Tahoma";
@@ -45,12 +47,12 @@ select:focus {
 }
 
 #wrapper {
-  border: solid darkgray 1px;
   margin: auto;
+  margin-top: 7%;
   width: 1000px;
   box-shadow: 0 1px 12px rgba(0, 0, 0, 0.5);
   border-radius: 10px;
-  background-color: white;
+  background-color: rgba(242, 97, 255, 0.247);
   opacity: 1;
 }
 
@@ -63,6 +65,30 @@ select:focus {
   color: #c5521c
 }
 
+#player1{
+  border-radius: 20px;
+  padding-left: 10px;
+  border: 2px solid;
+  border-color: #d39e85;
+  background-color: beige;
+} 
+
+#player2{
+  border-radius: 20px;
+  padding-left: 10px;
+  border: 2px solid;
+  border-color: #d39e85;
+  background-color: beige;
+}
+
+#player3{
+  border-radius: 20px;
+  padding-left: 10px;
+  border: 2px solid;
+  border-color: #d39e85;
+  background-color: beige;
+}
+
 #nextSlide {
   width: 150px;
   height: 40px;
@@ -70,6 +96,8 @@ select:focus {
   font-size: 30px;
   color: white;
   border-radius: 20px;
+  border: 2px solid;
+  border-color: #000000;
 }
 
 .num {
@@ -91,7 +119,7 @@ input[type="text"] {
   text-align: center;
   font-size: 30px;
   font-family: "Tahoma";
-  background-color: red;
+  background-color: #FF6D28;
   color: white;
   border-radius: 20px;
   margin-bottom: 5px;
@@ -108,7 +136,7 @@ input[type="text"] {
   width: 150px;
   font-size: 30px;
   font-family: "Tahoma";
-  background-color: red;
+  background-color: #FF6D28;
   color: white;
   border-radius: 20px;
   margin: auto;
@@ -118,7 +146,7 @@ input[type="text"] {
 #change {
   text-align: center;
   font-family: "Tahoma";
-  background-color: red;
+  background-color: #FF6D28;
   color: white;
   border-radius: 20px;
   margin: auto;

@@ -9,9 +9,9 @@
 		<link rel="shortcut icon" href="images/Grayicon.ico" type="image/x-icon">
 		<link rel="icon" href="images/icon.png" type="image/x-icon">
 	</head>
-	<body onload="generate()">
-		<form name="Obrazec" id="Obrazec" method="post" autocomplete="off" action="game.php" >
-        <div id="Header">        
+	<body onload="generate()" id="tsparticles">
+		<form name="obrazec" id="obrazec" method="post" autocomplete="off" action="game.php" >
+        <div id="header">        
             <img src="images/mainText.png">
         </div>
         <div id="wrapper">

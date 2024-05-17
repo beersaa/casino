@@ -34,8 +34,8 @@
 	</head>
 
 	<body onload="redirTimer()">
-		<form name="Obrazec" id="Obrazec" method="post" autocomplete="off" action="game.php">
-        <div id="Header">
+		<form name="obrazec" id="obrazec" method="post" autocomplete="off" action="game.php">
+        <div id="header">
             <img src="images/mainText.png">
         </div>
         <div id="wrapper">

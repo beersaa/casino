@@ -32,7 +32,6 @@
     }
 ?>
 
-
 <!DOCTYPE html>
 <html lang="sl">
 	<head>
@@ -43,12 +42,10 @@
         <link rel="stylesheet" href="css/main.css">
 		<link rel="shortcut icon" href="images/Grayicon.ico" type="image/x-icon">
 		<link rel="icon" href="images/icon.png" type="image/x-icon">
-        
-
 	</head>
 	<body onload="generate()">
-        <form name="Obrazec" id="Obrazec" method="post" autocomplete="off" action="<?php if($_SESSION["roundN"]==$_SESSION["roundNum"]){echo 'end.php';}else{echo 'game.php';}?>">
-        <div id="Header">
+        <form name="obrazec" id="obrazec" method="post" autocomplete="off" action="<?php if($_SESSION["roundN"]==$_SESSION["roundNum"]){echo 'end.php';}else{echo 'game.php';}?>">
+        <div id="header">
             <img src="images/mainText.png">
         </div>
         <div id="wrapper">
@@ -57,9 +54,9 @@
                     echo "<img src='images/dice".  $p1Roll[$x]. ".png' alt='dice1' style='border:3px solid black; margin:0 1px; border-radius:5px;'>";
                 }?></br></br></br>
                 <strong class="name"><?php echo $_SESSION["p1"];  ?></strong></br>
-                <div class="numero"><?php echo $_SESSION["p1Score"];  ?></div>
+                <div class="number"><?php echo $_SESSION["p1Score"];  ?></div>
             </div>
-            <div id="sredni"class="player">
+            <div id="middle"class="player">
                 <?php  for ($x = 0; $x <$_SESSION["diceNum"] ; $x++) {
                     echo "<img src='images/dice".  $p2Roll[$x]. ".png' alt='dice1' style='border:3px solid black; margin:0 1px; border-radius:5px;'>";
                 }
@@ -67,7 +64,7 @@
                 </br></br></br>
 
                 <strong class="name"><?php echo $_SESSION["p2"];  ?></strong></br>
-                <div class="numero"><?php echo $_SESSION["p2Score"];  ?></div>
+                <div class="number"><?php echo $_SESSION["p2Score"];  ?></div>
             </div>
             <div class="player">
                 <?php  for ($x = 0; $x <$_SESSION["diceNum"] ; $x++) {
@@ -75,9 +72,8 @@
                 }
                 ?>
                 </br></br></br>
-
                 <strong class="name"><?php echo $_SESSION["p3"];  ?></strong></br>
-                <div class="numero"><?php echo $_SESSION["p3Score"];  ?></div>
+                <div class="number"><?php echo $_SESSION["p3Score"];  ?></div>
             </div>
             <div id="buton" >
                 <input type="submit" id="gumb" value="<?php if($_SESSION["roundN"]==$_SESSION["roundNum"]){echo 'Results';}else {echo 'Roll';}  ?>">
